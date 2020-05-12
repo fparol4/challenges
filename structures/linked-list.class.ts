@@ -5,9 +5,9 @@ interface LinkedListInterface {
 
 class LinkedList implements LinkedListInterface {
     public value: any
-    public next: LinkedListInterface
+    public next: LinkedListInterface | undefined
 
-    constructor(value: any, next: LinkedListInterface) {
+    constructor(value: any, next: LinkedListInterface | undefined = undefined) {
         this.value = value
         this.next = next
     }
