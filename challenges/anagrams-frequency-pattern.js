@@ -10,7 +10,7 @@ const verifyAnagram = (word, anagram) => {
     const strFrequency = (str) => {
         return [...str].reduce((p, char) => {
             const charLowerCase = char.toLowerCase()
-            p[charLowerCase] = p[charLowerCase] ? ++p[charLowerCase] : 1
+            p[charLowerCase] = ++p[charLowerCase] || 1
             return p
         }, {})
     }
