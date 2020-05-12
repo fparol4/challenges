@@ -14,16 +14,27 @@
  *     i                     i
  * [1, 2, 2, 3, 5, 8] -> [1, 3, 2, 3, 5, 8]
  *           j                     j
+ *  i
+ * [1] -> 1
+ *  j 
+ * 
+ *  i
+ * []
  * @param {array} arr 
  */
 
 const countManyUniqueValuesInArray = (arr) => {
-    let i, j
-    for (i = 0, j = 1; j < arr.length; j++) {
+    if (!arr.length) {
+        return 0
+    }
+
+    let i = 0
+    for (let j = 1; j < arr.length; j++) {
         if (arr[i] !== arr[j]) {
-            i++
+            arr[++i] = arr[j]
         }
     }
+
     return i + 1
 }
 
@@ -38,14 +49,21 @@ const countManyUniqueValuesInArray = (arr) => {
  */
 
 const uniqueValuesInArray = (arr) => {
-    let i, j
-    for (i = 0, j = 1; j < arr.length; j++) {
+    if (!arr.length) {
+        return 0
+    }
+
+    let i = 0
+    for (let j = 1; j < arr.length; j++) {
         if (arr[i] !== arr[j]) {
             arr[++i] = arr[j]
         }
     }
+
     return arr.slice(0, i + 1)
 }
+
+console.log(countManyUniqueValuesInArray([]))
 
 module.exports = {
     countManyUniqueValuesInArray,
