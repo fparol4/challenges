@@ -5,9 +5,11 @@
  * 
  * @algorithm
  * - sum all the first numbers on the n position - 0 -> (3 - 1)
- * - start another iteration in `n` position, sum with the max value 
+ * - alocate the temporary sum as the maxSum 
+ * - start another iteration in `n` position, sum with the temporary value 
  * and subtract the value of `n` subtracted from the current `i` position 
- * n = 2; i = 3 -> arr[i] + maxSum - arr[i - n]
+ * n = 2; i = 3 -> arr[i] + temporary - arr[i - n]
+ * 
  * 
  * @requires
  * - Solve in O(n)
@@ -24,9 +26,10 @@ const maxSumConsecutive = (arr, n) => {
         maxSum += arr[i]
     }
 
+    let tempSum = maxSum
     for (let i = n; i < arr.length; i++) {
-        const sum = arr[i] - arr[i - n] + maxSum
-        maxSum = Math.max(sum, maxSum)
+        tempSum = tempSum + arr[i] - arr[i - n]
+        maxSum = Math.max(tempSum, maxSum)
     }
 
     return maxSum
