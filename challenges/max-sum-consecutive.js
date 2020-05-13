@@ -26,7 +26,7 @@ const maxSumConsecutive = (arr, n) => {
 
     for (let i = n; i < arr.length; i++) {
         const sum = arr[i] - arr[i - n] + maxSum
-        maxSum = sum > maxSum ? sum : maxSum
+        maxSum = Math.max(sum, maxSum)
     }
 
     return maxSum
