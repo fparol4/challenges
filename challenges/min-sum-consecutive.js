@@ -17,13 +17,17 @@ const minSumConsecutive = (arr, num) => {
             sum += arr[j++]
         } else if (sum >= num) {
             result = Math.min(result, j - i)
-            sum -= arr[i++]
+            if (i !== j) {
+                sum -= arr[i++]
+            } else {
+                i++
+            }
         } else {
             break
         }
 
     }
-
+    console.log(result)
     return result === Infinity ? 0 : result
 }
 
