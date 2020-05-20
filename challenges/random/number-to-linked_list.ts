@@ -1,4 +1,4 @@
-import LinkedList from '../structures/linked-list.class'
+import LinkedList from '../../structures/linked-list.class'
 
 /** Number to linkedList O(n) */
 const numberToLinkedList = (num: number | string[]): LinkedList => {
