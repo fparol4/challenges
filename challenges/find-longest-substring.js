@@ -12,30 +12,44 @@
  */
 
 
-const longestSubstring = (str) => {
-    if (!str.length) {
-        return 0
-    }
-
-    let longestSubstring = 0
-    let currentSubstring = 0
-    let currentLetterPositions = []
+const longestSubstringNaive = (str) => {
+    let longestSubstring = 0;
+    let currentCount = 0;
+    let lastCharPostions = {}
+    let lastCharPosition
 
     for (let i = 0; i < str.length; i++) {
-        if (currentLetterPositions[str[i]] !== undefined) {
-            console.log('eq', str[i])
-            currentLetterPositions = []
-            currentSubstring = 1
-        } else if (str[currentLetterPositions[currentLetterPositions.length - 1]] !== str[i]) {
-            currentSubstring++
-        }
+        lastCharPosition = lastCharPostions[str[i]]
 
-        currentLetterPositions[str[i]] = i
-        longestSubstring = Math.max(longestSubstring, currentSubstring)
+        if (lastCharPosition !== undefined) {
+            longestSubstring = Math.max(currentCount, longestSubstring)
+            i = lastCharPosition
+            currentCount = 0
+            lastCharPostions = {}
+        } else {
+            currentCount++
+            lastCharPostions[str[i]] = i
+        }
     }
 
-    return longestSubstring
+    return Math.max(longestSubstring, currentCount)
 }
 
-const r = longestSubstring('dvdf')
+const longestSubstring = (str) => {
+    let [max, start, track, char] = [0, 0, {}, undefined]
+    for (let i = 0; i < str.length; i++) {
+        char = str[i]
+
+        if (track[char] >= start) {
+            max = Math.max(max, i - start)
+            start = track[char] + 1
+        }
+
+        track[str[i]] = i
+    }
+
+    return Math.max(max, str.length - start)
+}
+
+const r = longestSubstring('aback')
 console.log(r)
