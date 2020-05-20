@@ -51,5 +51,4 @@ const longestSubstring = (str) => {
     return Math.max(max, str.length - start)
 }
 
-const r = longestSubstring('aback')
-console.log(r)
+module.exports = longestSubstring
