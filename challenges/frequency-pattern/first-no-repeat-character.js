@@ -1,4 +1,4 @@
-const stringFrequencyAlgorithm = require('../algorithms/string-frequency.algorithm')
+const stringFrequencyAlgorithm = require('../../algorithms/string-frequency.algorithm')
 
 /**
  * First non repeating character
