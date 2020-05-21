@@ -2,7 +2,6 @@ const binaryNumbersSearch = (sortedArr, value) => {
     if (!sortedArr.length) {
         return -1
     }
-
     const middleIndex = Math.floor(sortedArr.length / 2)
     const middleValue = sortedArr[middleIndex]
 
@@ -12,10 +11,9 @@ const binaryNumbersSearch = (sortedArr, value) => {
         return binaryNumbersSearch(sortedArr.slice(0, middleIndex), value)
     }
 
-    return middleValue + binaryNumbersSearch(sortedArr.slice(middleIndex + 1), value)
-
+    const searchResult = binaryNumbersSearch(sortedArr.slice(middleIndex + 1), value)
+    return searchResult !== -1 ? middleIndex + 1 + searchResult : -1
 }
 
-const r = binaryNumbersSearch([1, 2, 3, 4, 5], 5)
-
+const r = binaryNumbersSearch([10, 20, 30, 50, 55], 56)
 module.exports = binaryNumbersSearch
